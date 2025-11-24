@@ -25,28 +25,28 @@ export function Hero() {
 
               <div className="space-y-4 pt-4">
                 <p className="text-base font-medium text-foreground/80">Book Free Mentorship</p>
-                <div className="flex flex-wrap gap-3 items-center">
+                <div className="flex flex-col gap-3 items-start">
                   <Button
                     asChild
                     size="lg"
-                    className="bg-[#141414] hover:bg-[#141414]/90 text-white font-semibold px-6 transition-transform hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl"
-                  >
-                    <a href="https://topmate.io/yahya_alaa" target="_blank" rel="noopener noreferrer">
-                      <Calendar className="mr-2 h-5 w-5" />
-                      Book on Topmate
-                    </a>
-                  </Button>
-                  <Button
-                    asChild
-                    size="lg"
-                    variant="outline"
-                    className="font-semibold px-6 bg-transparent transition-transform hover:scale-110 active:scale-95 hover:bg-accent/10 shadow-sm hover:shadow-md"
+                    className="bg-[#141414] hover:bg-[#141414]/90 text-white font-semibold px-8 transition-transform hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl"
                   >
                     <a href="https://adplist.org/mentors/yahya-alaa" target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-2 h-5 w-5" />
+                      <Calendar className="mr-2 h-5 w-5" />
                       Book on ADPList
                     </a>
                   </Button>
+                  <p className="text-sm text-muted-foreground">
+                    Also available on{" "}
+                    <a
+                      href="https://topmate.io/yahya_alaa"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground hover:text-primary underline underline-offset-2 font-medium transition-colors"
+                    >
+                      Topmate
+                    </a>
+                  </p>
                 </div>
                 <p className="text-sm text-muted-foreground">100% free. No prep needed. All levels welcome.</p>
               </div>
