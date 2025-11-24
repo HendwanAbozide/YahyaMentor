@@ -57,7 +57,7 @@ export function Testimonials() {
       <div className="container mx-auto max-w-7xl">
         <div className="space-y-4 mb-12 text-center">
           {/* Flipped gradient (Dark->Mid->Dark) and added w-fit mx-auto for dynamic width */}
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-neutral-950 via-neutral-500 to-neutral-950 bg-clip-text text-transparent text-balance w-fit mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
             What Mentees Say
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -135,7 +135,7 @@ export function Testimonials() {
             href="https://adplist.org/mentors/yahya-alaa"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent hover:text-accent/80 transition-colors font-medium text-center"
+            className="text-black hover:scale-105 transition-transform inline-block font-medium text-center"
           >
             View all ADPList reviews →
           </a>
@@ -144,7 +144,7 @@ export function Testimonials() {
             href="https://topmate.io/yahya_alaa#testimonials"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent hover:text-accent/80 transition-colors font-medium text-center"
+            className="text-black hover:scale-105 transition-transform inline-block font-medium text-center"
           >
             View all Topmate reviews →
           </a>

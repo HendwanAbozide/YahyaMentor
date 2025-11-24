@@ -35,15 +35,15 @@ export function FAQ() {
       <div className="container mx-auto max-w-3xl">
         <div className="space-y-4 mb-16 text-center">
           {/* Flipped gradient (Dark->Mid->Dark) and added w-fit mx-auto for dynamic width */}
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-neutral-950 via-neutral-500 to-neutral-950 bg-clip-text text-transparent text-balance w-fit mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
             Frequently Asked Questions
           </h2>
         </div>
 
         <Accordion type="single" collapsible className="w-full space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-6 bg-card">
-              <AccordionTrigger className="text-left text-lg font-medium hover:text-accent">
+            <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-6 bg-card transition-all duration-200 hover:scale-[1.02] hover:shadow-md">
+              <AccordionTrigger className="text-left text-lg font-medium hover:no-underline">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground leading-relaxed">{faq.answer}</AccordionContent>

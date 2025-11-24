@@ -34,7 +34,7 @@ export function WhoThisIsFor() {
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-4 mb-16 text-center">
           {/* Flipped gradient (Dark->Mid->Dark) and added w-fit mx-auto for dynamic width */}
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-neutral-950 via-neutral-500 to-neutral-950 bg-clip-text text-transparent text-balance w-fit mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
             Who Is This For?
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">

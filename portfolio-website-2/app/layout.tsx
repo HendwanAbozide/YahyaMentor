@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`font-sans antialiased ${_geist.className}`}>
         {/* SVG Gradient Definition for Icons */}
         <svg style={{ width: 0, height: 0, position: "absolute" }} aria-hidden="true">

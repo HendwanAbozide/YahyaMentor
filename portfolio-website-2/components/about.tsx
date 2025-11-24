@@ -22,7 +22,7 @@ export function About() {
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
             {/* Flipped gradient (Dark->Mid->Dark) and added w-fit (no mx-auto because left aligned) for dynamic width */}
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-neutral-950 via-neutral-500 to-neutral-950 bg-clip-text text-transparent text-balance w-fit">
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit">
               About Me
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">

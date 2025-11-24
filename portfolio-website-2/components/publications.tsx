@@ -3,35 +3,35 @@ import { FileText, ExternalLink } from "lucide-react"
 export function Publications() {
   const publications = [
     {
-      title: "Scalable Microservices Architecture: Best Practices and Patterns",
+      title: "Enhanced thermal-rgb fusion for robust object detection",
       venue: "Software Engineering Journal",
       year: "2024",
       link: "https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=NxOd8yoAAAAJ&citation_for_view=NxOd8yoAAAAJ:9yKSN-GCB0IC",
       tags: ["Architecture", "Microservices", "Cloud"],
     },
     {
-      title: "Machine Learning in Production: A Practical Guide",
+      title: "RGB-LiDAR fusion for accurate 2D and 3D object detection",
       venue: "IEEE Computer Society",
       year: "2023",
       link: "https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=NxOd8yoAAAAJ&citation_for_view=NxOd8yoAAAAJ:2osOgNQ5qMEC",
       tags: ["Machine Learning", "DevOps", "Production"],
     },
     {
-      title: "Career Development Strategies for Senior Engineers",
+      title: "Sensor fusion for 3d object detection for autonomous vehicles",
       venue: "ACM Queue",
       year: "2023",
       link: "https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=NxOd8yoAAAAJ&citation_for_view=NxOd8yoAAAAJ:u5HHmVD_uO8C",
       tags: ["Career", "Leadership", "Mentorship"],
     },
     {
-      title: "Optimizing Neural Networks for Edge Devices",
+      title: "Learnable fusion mechanisms for multimodal object detection in autonomous vehicles",
       venue: "International Conference on AI",
       year: "2022",
       link: "https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=NxOd8yoAAAAJ&citation_for_view=NxOd8yoAAAAJ:qjMakFHDy7sC",
       tags: ["AI", "Edge Computing", "Optimization"],
     },
     {
-      title: "Distributed Systems Reliability Analysis",
+      title: "Sensor fusion operators for multimodal 2d object detection",
       venue: "Journal of Systems Engineering",
       year: "2022",
       link: "https://scholar.google.ca/citations?view_op=view_citation&hl=en&user=NxOd8yoAAAAJ&citation_for_view=NxOd8yoAAAAJ:u-x6o8ySG0sC",
@@ -43,7 +43,7 @@ export function Publications() {
     <section id="publications" className="py-24 px-6 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-4 mb-16 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-neutral-950 via-neutral-500 to-neutral-950 bg-clip-text text-transparent text-balance w-fit mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
             Research & Publications
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
