@@ -1,11 +1,18 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { Star, Quote, ExternalLink } from "lucide-react"
+import { Star, Quote, ExternalLink, Calendar, MessageCircle, Clock, LucideIcon } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import testimonialsData from "@/data/testimonials.json"
+import statsData from "@/data/stats.json"
 
 const testimonials = testimonialsData
+
+const iconMap: Record<string, LucideIcon> = {
+  Calendar,
+  MessageCircle,
+  Clock,
+}
 
 
 // Counter component with animation
@@ -103,25 +110,24 @@ export function Testimonials() {
           </h2>
 
           {/* Stats with animated counters */}
-          <div className="flex flex-wrap gap-8 justify-center items-center">
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-foreground">
-                <AnimatedCounter end={50} suffix="+" />
-              </div>
-              <div className="text-sm text-muted-foreground mt-1">Bookings</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-foreground">
-                <AnimatedCounter end={100} suffix="+" />
-              </div>
-              <div className="text-sm text-muted-foreground mt-1">Reviews</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-foreground">
-                <AnimatedCounter end={1000} suffix="+" />
-              </div>
-              <div className="text-sm text-muted-foreground mt-1">Minutes</div>
-            </div>
+          {/* Stats with animated counters */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+            {statsData.map((stat, index) => {
+              const Icon = iconMap[stat.icon] || Calendar
+              return (
+                <div key={index} className="glass px-6 py-4 rounded-xl flex items-center justify-center gap-4 transition-transform hover:-translate-y-1 duration-300">
+                  <div className="p-2 bg-blue-500/10 rounded-full shrink-0">
+                    <Icon className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent leading-none mb-1">
+                      <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                    </div>
+                    <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
 
@@ -145,88 +151,48 @@ export function Testimonials() {
           >
             {duplicatedTestimonials.map((testimonial, index) => (
               <div key={index} className="flex-shrink-0 w-[320px]">
-                <a
-                  href={testimonial.link || "#"}
-                  target={testimonial.link ? "_blank" : "_self"}
-                  rel="noopener noreferrer"
-                  className={`block h-full ${!testimonial.link ? 'cursor-default' : 'cursor-pointer'}`}
-                  onClick={(e) => !testimonial.link && e.preventDefault()}
-                >
-                  <Card className="h-full glass relative overflow-hidden group border-white/20 bg-white/60 hover:bg-white/80 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                <Card className="h-full glass relative overflow-hidden border-white/20 bg-white/60 transition-all duration-500 shadow-lg hover:shadow-[0_0_25px_rgba(59,130,246,0.2)] hover:border-blue-500/30">
 
-                    <CardContent className="p-6 space-y-4 relative z-10 flex flex-col h-full">
-                      {/* Header: Rating & Platform */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-1 bg-yellow-500/10 px-2 py-1 rounded-full">
-                          <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
-                          <span className="font-bold text-yellow-700 text-xs">{testimonial.rating}.0</span>
-                        </div>
-                        {testimonial.type && (
-                          <span className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground/50 bg-secondary/50 px-2 py-1 rounded-md">
-                            {testimonial.type}
-                          </span>
-                        )}
+                  <CardContent className="p-6 space-y-4 relative z-10 flex flex-col h-full">
+                    {/* Header: Rating & Platform */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1 bg-yellow-500/10 px-2 py-1 rounded-full">
+                        <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+                        <span className="font-bold text-yellow-700 text-xs">{testimonial.rating}.0</span>
                       </div>
+                      {testimonial.type && (
+                        <span className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground/50 bg-secondary/50 px-2 py-1 rounded-md">
+                          {testimonial.type}
+                        </span>
+                      )}
+                    </div>
 
-                      {/* Testimonial Text */}
-                      <div className="flex-grow">
-                        <p className="text-[15px] text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: testimonial.text }} />
-                      </div>
+                    {/* Testimonial Text */}
+                    <div className="flex-grow">
+                      <p className="text-[15px] text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: testimonial.text }} />
+                    </div>
 
-                      {/* Author Info */}
-                      <div className="pt-4 border-t border-black/5 flex items-center gap-3 mt-auto">
-                        <div className="relative">
-                          <div className="absolute inset-0 bg-blue-500 blur opacity-20 rounded-full"></div>
-                          <img
-                            src={testimonial.avatar}
-                            alt={testimonial.name}
-                            className="w-10 h-10 rounded-full object-cover relative border-2 border-white shadow-sm"
-                            draggable={false}
-                          />
-                        </div>
-                        <div>
-                          <div className="font-bold text-foreground text-sm">{testimonial.name}</div>
-                          <div className="text-xs text-muted-foreground font-medium">{testimonial.date}</div>
-                        </div>
+                    {/* Author Info */}
+                    <div className="pt-4 border-t border-black/5 flex items-center gap-3 mt-auto">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-blue-500 blur opacity-20 rounded-full"></div>
+                        <img
+                          src={testimonial.avatar}
+                          alt={testimonial.name}
+                          className="w-10 h-10 rounded-full object-cover relative border-2 border-white shadow-sm"
+                          draggable={false}
+                        />
                       </div>
-                    </CardContent>
-
-                    {/* Hover Overlay */}
-                    {testimonial.link && (
-                      <div className="absolute inset-0 bg-blue-600/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
-                        <div className="text-white text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm">
-                            <ExternalLink className="w-6 h-6 text-white" />
-                          </div>
-                          <span className="font-bold text-sm tracking-wide">View Original Review</span>
-                        </div>
+                      <div>
+                        <div className="font-bold text-foreground text-sm">{testimonial.name}</div>
+                        <div className="text-xs text-muted-foreground font-medium">{testimonial.date}</div>
                       </div>
-                    )}
-                  </Card>
-                </a>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-          <a
-            href="https://adplist.org/mentors/yahya-alaa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:scale-105 transition-transform inline-block font-medium text-center"
-          >
-            View all ADPList reviews →
-          </a>
-          <span className="hidden sm:inline text-muted-foreground">|</span>
-          <a
-            href="https://topmate.io/yahya_alaa#testimonials"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black hover:scale-105 transition-transform inline-block font-medium text-center"
-          >
-            View all Topmate reviews →
-          </a>
         </div>
       </div>
     </section>
