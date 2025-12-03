@@ -127,7 +127,7 @@ export function Testimonials() {
 
         {/* Horizontal auto-scrolling container */}
         <div
-          className="relative max-w-5xl mx-auto"
+          className="relative max-w-7xl mx-auto"
           style={{
             maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
             WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
