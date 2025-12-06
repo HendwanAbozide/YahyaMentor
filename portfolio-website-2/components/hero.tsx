@@ -11,7 +11,7 @@ const slogans = [
   "Career Exploration",
   "Growing Together",
   "Collaborative Learning",
-  "Building Your Future",
+  "Machine Learning Mastery",
   "Guided Career Growth"
 ]
 
