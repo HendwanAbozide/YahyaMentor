@@ -8,10 +8,16 @@ import { useState, useEffect } from "react"
 
 const slogans = [
   "Free Mentorship",
-  "Career Exploration",
+  "Build your tech career",
   "Collaborative Learning",
   "Machine Learning Mastery",
-  "Guided Career Growth"
+  "Guided Career Growth",
+  "Level up your tech career",
+  "Break into machine learning",
+  "Production-ready ML skills",
+  "Real-world ML mentoring",
+  "System design made simple",
+  "Build your interview confidence"
 ]
 
 export function Hero() {
