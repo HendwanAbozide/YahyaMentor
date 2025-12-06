@@ -3,8 +3,28 @@
 import { Button } from "@/components/ui/button"
 import { Linkedin, Mail, Github, Calendar, ExternalLink } from "lucide-react"
 import Image from "next/image"
+import { useState, useEffect } from "react"
+
+const slogans = [
+  "Free Mentorship",
+  "Career Exploration",
+  "Growing Together",
+  "Collaborative Learning",
+  "Building Your Future",
+  "Guided Career Growth"
+]
 
 export function Hero() {
+  const [currentSloganIndex, setCurrentSloganIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSloganIndex((prevIndex) => (prevIndex + 1) % slogans.length)
+    }, 3000) // Change slogan every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section id="hero" className="pt-20 pb-16 px-6 min-h-screen flex items-center relative">
       <div className="container mx-auto max-w-6xl relative z-10 mt-16 md:mt-20 lg:mt-24">
@@ -12,14 +32,19 @@ export function Hero() {
           <div className="space-y-8 order-2 md:order-1">
             <div className="space-y-6">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground text-balance leading-tight">
-                <span className="whitespace-nowrap">Free Mentorship for</span>{" "}
+                <span
+                  key={currentSloganIndex}
+                  className="inline-block animate-fade-in whitespace-nowrap"
+                >
+                  {slogans[currentSloganIndex]} for
+                </span>{" "}
                 <span className="bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
                   Aspiring Engineers
                 </span>
               </h1>
               <h2 className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed font-normal">
                 👋 I'm <span className="font-semibold text-foreground">Yahya Alaa</span>, a Senior Machine Learning
-                Engineer. I help engineers grow their careers through 1:1 guidance, resume reviews, and personalized
+                Engineer. I help engineers grow their careers through resume reviews, and personalized
                 career advice.
               </h2>
 
@@ -95,7 +120,7 @@ export function Hero() {
 
               {/* Image Container */}
               <div className="absolute inset-4 md:inset-6 rounded-full overflow-hidden border-[6px] border-white shadow-lg bg-white group-hover:scale-110 group-hover:shadow-2xl transition-all duration-300">
-                <Image src="/images/profile-outdoors.jpg" alt="Yahya Alaa" fill className="object-cover" priority />
+                <Image src="/images/profile-enhanced.png" alt="Yahya Alaa" fill className="object-cover" priority />
               </div>
             </div>
           </div>
