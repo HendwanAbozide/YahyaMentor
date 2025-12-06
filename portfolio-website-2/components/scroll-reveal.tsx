@@ -22,8 +22,8 @@ export function ScrollReveal({ children, className = "", delay = 0 }: ScrollReve
                 }
             },
             {
-                threshold: 0.3, // Trigger when 30% of element is visible
-                rootMargin: "0px 0px -50px 0px" // Trigger slightly before element enters viewport
+                threshold: 0.1, // Trigger earlier: when 10% is visible
+                rootMargin: "0px" // Trigger as soon as it enters viewport
             }
         )
 
@@ -41,9 +41,9 @@ export function ScrollReveal({ children, className = "", delay = 0 }: ScrollReve
     return (
         <div
             ref={elementRef}
-            className={`transition-all duration-700 ease-out ${isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-12"
+            className={`transition-all duration-500 ease-out ${isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
                 } ${className}`}
         >
             {children}
