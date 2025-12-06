@@ -1,4 +1,5 @@
 import { GraduationCap, Rocket, RefreshCw, BookOpen, TrendingUp } from "lucide-react"
+import { ScrollReveal } from "@/components/scroll-reveal"
 
 const personas = [
   {
@@ -34,9 +35,11 @@ export function WhoThisIsFor() {
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-4 mb-16 text-center">
           {/* Flipped gradient (Dark->Mid->Dark) and added w-fit mx-auto for dynamic width */}
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
-            Who Is This For?
-          </h2>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
+              Who Is This For?
+            </h2>
+          </ScrollReveal>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             If you're trying to level up, break in, or break through—you're in the right place.
           </p>

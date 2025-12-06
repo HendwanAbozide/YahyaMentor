@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Code2, FileText, Briefcase, Target, MessageSquare, LucideIcon } from "lucide-react"
 import servicesData from "@/data/services.json"
+import { ScrollReveal } from "@/components/scroll-reveal"
 
 // Map icon string names to actual Lucide icon components
 const iconMap: Record<string, LucideIcon> = {
@@ -60,9 +61,11 @@ export function Services() {
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-4 mb-16 text-center">
           {/* Flipped gradient (Dark->Mid->Dark) and added w-fit mx-auto for dynamic width */}
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
-            Book Your 1:1 Session Now
-          </h2>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
+              Book Your 1:1 Session Now
+            </h2>
+          </ScrollReveal>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Personalized guidance for engineers at every stage of their journey.
           </p>

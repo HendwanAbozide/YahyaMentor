@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { FileText, GraduationCap, Briefcase, ChevronLeft, ChevronRight } from "lucide-react"
+import { ScrollReveal } from "@/components/scroll-reveal"
 import experiencesData from "@/data/experiences.json"
 import publicationsData from "@/data/publications.json"
 import teachingData from "@/data/teaching.json"
@@ -38,9 +39,11 @@ export function MeetYourMentor() {
         <section id="meet-your-mentor" ref={sectionRef} className="py-24 px-6 bg-secondary/30">
             <div className="container mx-auto max-w-6xl">
                 <div className="space-y-4 mb-12 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
-                        Meet Your Mentor
-                    </h2>
+                    <ScrollReveal>
+                        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
+                            Meet Your Mentor
+                        </h2>
+                    </ScrollReveal>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                         A blend of industry leadership, academic research, and educational experience.
                     </p>

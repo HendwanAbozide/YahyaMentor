@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react"
 import testimonialsData from "@/data/testimonials.json"
 import statsData from "@/data/stats.json"
 import { Inter } from "next/font/google"
+import { ScrollReveal } from "@/components/scroll-reveal"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -108,9 +109,11 @@ export function Testimonials() {
     <section id="testimonials" className="py-24 px-6 overflow-hidden">
       <div className="container mx-auto w-full">
         <div className="space-y-6 mb-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
-            What Mentees Say
-          </h2>
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-700 via-blue-400 to-blue-700 bg-clip-text text-transparent text-balance w-fit mx-auto">
+              What Mentees Say
+            </h2>
+          </ScrollReveal>
 
           {/* Stats with animated counters */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 max-w-2xl mx-auto">
