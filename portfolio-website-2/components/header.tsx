@@ -6,10 +6,18 @@ import { Menu, X } from "lucide-react"
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isPastHero, setIsPastHero] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
+
+      // Check if scrolled past hero section
+      const heroSection = document.getElementById("hero")
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight
+        setIsPastHero(window.scrollY > heroBottom - 100)
+      }
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -34,9 +42,29 @@ export function Header() {
         <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToSection("hero")}
-            className="text-xl font-semibold text-foreground transition-colors"
+            className="text-xl font-semibold text-foreground transition-colors relative overflow-hidden"
+            style={{ minWidth: "110px" }}
           >
-            Yahya Alaa
+            <span
+              className={`inline-block transition-all duration-500 ease-in-out ${isPastHero ? "opacity-0 scale-90" : "opacity-100 scale-100"
+                }`}
+              style={{
+                clipPath: isPastHero ? "inset(0 100% 0 0)" : "inset(0 0 0 0)",
+                transition: "clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s, transform 0.4s"
+              }}
+            >
+              Yahya Alaa
+            </span>
+            <span
+              className={`absolute left-0 top-0 inline-block transition-all duration-500 ease-in-out font-bold ${isPastHero ? "opacity-100 scale-100" : "opacity-0 scale-75"
+                }`}
+              style={{
+                clipPath: isPastHero ? "inset(0 0 0 0)" : "inset(0 0 0 100%)",
+                transition: "clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, opacity 0.4s 0.2s, transform 0.4s 0.2s"
+              }}
+            >
+              YA
+            </span>
           </button>
 
           {/* Desktop Navigation */}
