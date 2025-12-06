@@ -3,67 +3,64 @@
 import { Button } from "@/components/ui/button"
 import { Linkedin, Mail, Github, Calendar, ExternalLink } from "lucide-react"
 import Image from "next/image"
-import { ADPListButton } from "@/components/adplist-button"
 import { useState, useEffect } from "react"
 
-const phrases = ["Guidance", "Free Mentorship", "Career Exploration"]
+const slogans = [
+  "Free Mentorship",
+  "Career Exploration",
+  "Growing Together",
+  "Collaborative Learning",
+  "Building Your Future",
+  "Guided Career Growth"
+]
 
 export function Hero() {
-  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
-  const [displayedText, setDisplayedText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
+  const [currentSloganIndex, setCurrentSloganIndex] = useState(0)
 
   useEffect(() => {
-    const currentPhrase = phrases[currentPhraseIndex]
-    const typingSpeed = isDeleting ? 50 : 100 // Faster when deleting
-    const pauseTime = 2000 // Pause when fully typed
+    const interval = setInterval(() => {
+      setCurrentSloganIndex((prevIndex) => (prevIndex + 1) % slogans.length)
+    }, 3000) // Change slogan every 3 seconds
 
-    const timer = setTimeout(() => {
-      if (!isDeleting && displayedText === currentPhrase) {
-        // Pause before deleting
-        setTimeout(() => setIsDeleting(true), pauseTime)
-      } else if (isDeleting && displayedText === "") {
-        // Move to next phrase
-        setIsDeleting(false)
-        setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length)
-      } else if (isDeleting) {
-        // Delete one character
-        setDisplayedText(currentPhrase.substring(0, displayedText.length - 1))
-      } else {
-        // Type one character
-        setDisplayedText(currentPhrase.substring(0, displayedText.length + 1))
-      }
-    }, typingSpeed)
-
-    return () => clearTimeout(timer)
-  }, [currentPhraseIndex, displayedText, isDeleting])
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <section id="hero" className="pt-20 pb-16 px-6 min-h-screen flex items-center relative">
       <div className="container mx-auto max-w-6xl relative z-10 mt-16 md:mt-20 lg:mt-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 order-2 md:order-2">
+          <div className="space-y-8 order-2 md:order-1">
             <div className="space-y-6">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                <span className="block min-h-[1.2em] mb-2">
-                  <span>
-                    {displayedText}
-                    <span className="animate-pulse">|</span>
-                  </span>
-                </span>
-                <span className="block bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
-                  with Yahya
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground text-balance leading-tight">
+                <span
+                  key={currentSloganIndex}
+                  className="inline-block animate-fade-in whitespace-nowrap"
+                >
+                  {slogans[currentSloganIndex]} for
+                </span>{" "}
+                <span className="bg-gradient-to-r from-blue-700 to-blue-400 bg-clip-text text-transparent">
+                  Aspiring Engineers
                 </span>
               </h1>
               <h2 className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed font-normal">
                 👋 I'm <span className="font-semibold text-foreground">Yahya Alaa</span>, a Senior Machine Learning
-                Engineer. I help engineers grow their careers through 1:1 guidance, resume reviews, and personalized
+                Engineer. I help engineers grow their careers through resume reviews, and personalized
                 career advice.
               </h2>
 
               <div className="space-y-4 pt-4">
+                <p className="text-base font-medium text-foreground/80">Book Free Mentorship</p>
                 <div className="flex flex-col gap-3 items-start">
-                  <ADPListButton />
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-[#141414] hover:bg-[#141414]/90 text-white font-semibold px-8 transition-transform hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl"
+                  >
+                    <a href="https://adplist.org/mentors/yahya-alaa" target="_blank" rel="noopener noreferrer">
+                      <Calendar className="mr-2 h-5 w-5" />
+                      Book on ADPList
+                    </a>
+                  </Button>
                   <p className="text-sm text-muted-foreground">
                     Also available on{" "}
                     <a
@@ -82,7 +79,7 @@ export function Hero() {
 
             <div className="flex items-center gap-4 pt-4">
               <a
-                href="https://www.linkedin.com/in/yahya-alaa/"
+                href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-neutral-700 hover:text-primary transition-colors"
@@ -91,7 +88,16 @@ export function Hero() {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="mailto:yahya.alaa.massoud@gmail.com"
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-700 hover:text-primary transition-colors"
+                aria-label="GitHub"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href="mailto:contact@example.com"
                 className="text-neutral-700 hover:text-primary transition-colors"
                 aria-label="Email"
               >
@@ -100,7 +106,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center order-1 md:order-1 text-primary">
+          <div className="relative flex justify-center items-center order-1 md:order-2 text-primary">
             {/* Profile picture with rotating dashed ring */}
             <div className="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] flex items-center justify-center group" style={{ perspective: '1200px' }}>
               {/* Rotating dashed ring - vertical flip */}
@@ -114,7 +120,7 @@ export function Hero() {
 
               {/* Image Container */}
               <div className="absolute inset-4 md:inset-6 rounded-full overflow-hidden border-[6px] border-white shadow-lg bg-white group-hover:scale-110 group-hover:shadow-2xl transition-all duration-300">
-                <Image src="/images/profile-outdoors.jpg" alt="Yahya Alaa" fill className="object-cover" priority />
+                <Image src="/images/profile-enhanced.png" alt="Yahya Alaa" fill className="object-cover" priority />
               </div>
             </div>
           </div>
