@@ -3,24 +3,39 @@
         "role": "Part-time Professor",
         "course": "Software Engineering & AI",
         "institution": "University of Ottawa",
-        "year": "2023",
+        "year": "2023–Present",
+        "outcome": "Teaching next-gen software engineers",
         "logo": "/images/uottawa-logo.png",
-        "link": ""
+        "highlights": [
+            "Designed and delivered curriculum on modern software engineering practices",
+            "Integrated AI/ML concepts into software development coursework",
+            "Mentored students on real-world projects and industry best practices"
+        ]
     },
     {
         "role": "Teaching Assistant",
         "course": "Computer Science Courses",
         "institution": "University of Ottawa",
-        "year": "2018 - 2022",
+        "year": "2018–2022",
+        "outcome": "Supporting CS education across multiple courses",
         "logo": "/images/uottawa-logo.png",
-        "link": ""
+        "highlights": [
+            "Assisted in teaching various computer science courses",
+            "Held office hours and provided one-on-one student support",
+            "Graded assignments and provided detailed feedback"
+        ]
     },
     {
         "role": "Instructor",
         "course": "Computer Vision",
         "institution": "ITI Egypt",
         "year": "2019",
+        "outcome": "Training professionals in computer vision",
         "logo": "/images/iti-logo.jpg",
-        "link": ""
+        "highlights": [
+            "Taught intensive computer vision course to industry professionals",
+            "Covered deep learning for CV applications and practical implementation",
+            "Guided students through hands-on projects and real-world applications"
+        ]
     }
 ]
