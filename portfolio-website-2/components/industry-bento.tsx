@@ -47,7 +47,7 @@ export function IndustryBento({ experiences }: IndustryBentoProps) {
                     >
                         <div
                             onClick={() => toggleExpand(index)}
-                            className="relative overflow-hidden rounded-3xl bg-card/50 backdrop-blur-sm border border-border/50 p-6 hover:shadow-xl hover:border-blue-500/30 transition-all duration-300 cursor-pointer"
+                            className="relative overflow-hidden rounded-3xl bg-card/50 backdrop-blur-sm border border-border/50 p-6 hover:shadow-xl hover:border-blue-500/30 active:scale-[0.98] transition-all duration-300 cursor-pointer"
                         >
                             {/* Company Logo */}
                             <div className="flex items-start justify-between mb-4">
