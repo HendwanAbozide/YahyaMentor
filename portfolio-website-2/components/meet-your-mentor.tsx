@@ -53,38 +53,73 @@ export function MeetYourMentor() {
                     </p>
                 </div>
 
-                <div className="space-y-32">
-                    {/* Industry Section */}
-                    <div className="space-y-12">
-                        <div className="flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-2xl bg-blue-500/10 flex items-center justify-center">
-                                <Briefcase className="w-6 h-6 text-blue-600" />
-                            </div>
-                            <h3 className="text-2xl font-bold text-foreground">Industry Experience</h3>
-                        </div>
-                        <IndustryBento experiences={experiences} />
-                    </div>
+                <div className="relative">
+                    {/* Vertical Timeline Line */}
+                    <div className="absolute left-[23px] top-4 bottom-0 w-0.5 bg-gradient-to-b from-blue-500/0 via-blue-500/30 to-blue-500/0 hidden md:block" />
 
-                    {/* Research Section */}
-                    <div className="space-y-12">
-                        <div className="flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-2xl bg-blue-500/10 flex items-center justify-center">
-                                <FileText className="w-6 h-6 text-blue-600" />
+                    <div className="space-y-24 md:space-y-32">
+                        {/* Industry Section */}
+                        <div className="flex gap-8 md:gap-12">
+                            {/* Sticky Icon Column */}
+                            <div className="hidden md:flex flex-col shrink-0 w-12">
+                                <div className="sticky top-32 h-12 w-12 rounded-2xl bg-background border border-blue-100 flex items-center justify-center z-10 shadow-sm">
+                                    <Briefcase className="w-6 h-6 text-blue-600" />
+                                </div>
                             </div>
-                            <h3 className="text-2xl font-bold text-foreground">Research & Publications</h3>
-                        </div>
-                        <ResearchBento publications={publications} />
-                    </div>
 
-                    {/* Teaching Section */}
-                    <div className="space-y-12">
-                        <div className="flex items-center gap-4">
-                            <div className="h-12 w-12 rounded-2xl bg-blue-500/10 flex items-center justify-center">
-                                <GraduationCap className="w-6 h-6 text-blue-600" />
+                            {/* Content Column */}
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-4 mb-8 md:mb-12 h-12">
+                                    <div className="md:hidden h-12 w-12 rounded-2xl bg-blue-500/10 flex items-center justify-center">
+                                        <Briefcase className="w-6 h-6 text-blue-600" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-foreground">Industry Experience</h3>
+                                </div>
+                                <IndustryBento experiences={experiences} />
                             </div>
-                            <h3 className="text-2xl font-bold text-foreground">Teaching & Education</h3>
                         </div>
-                        <TeachingBento teaching={teaching} />
+
+                        {/* Research Section */}
+                        <div className="flex gap-8 md:gap-12">
+                            {/* Sticky Icon Column */}
+                            <div className="hidden md:flex flex-col shrink-0 w-12">
+                                <div className="sticky top-32 h-12 w-12 rounded-2xl bg-background border border-blue-100 flex items-center justify-center z-10 shadow-sm">
+                                    <FileText className="w-6 h-6 text-blue-600" />
+                                </div>
+                            </div>
+
+                            {/* Content Column */}
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-4 mb-8 md:mb-12 h-12">
+                                    <div className="md:hidden h-12 w-12 rounded-2xl bg-blue-500/10 flex items-center justify-center">
+                                        <FileText className="w-6 h-6 text-blue-600" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-foreground">Research & Publications</h3>
+                                </div>
+                                <ResearchBento publications={publications} />
+                            </div>
+                        </div>
+
+                        {/* Teaching Section */}
+                        <div className="flex gap-8 md:gap-12">
+                            {/* Sticky Icon Column */}
+                            <div className="hidden md:flex flex-col shrink-0 w-12">
+                                <div className="sticky top-32 h-12 w-12 rounded-2xl bg-background border border-blue-100 flex items-center justify-center z-10 shadow-sm">
+                                    <GraduationCap className="w-6 h-6 text-blue-600" />
+                                </div>
+                            </div>
+
+                            {/* Content Column */}
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-4 mb-8 md:mb-12 h-12">
+                                    <div className="md:hidden h-12 w-12 rounded-2xl bg-blue-500/10 flex items-center justify-center">
+                                        <GraduationCap className="w-6 h-6 text-blue-600" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-foreground">Teaching & Education</h3>
+                                </div>
+                                <TeachingBento teaching={teaching} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
