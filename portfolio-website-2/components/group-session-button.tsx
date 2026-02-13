@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog"
-import * as VisuallyHidden from "@radix-ui/react-visually-hidden"
 
 interface GroupSessionButtonProps {
     text?: string
@@ -103,9 +102,7 @@ export function GroupSessionButton({
                 </button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[900px] lg:max-w-[1000px] w-[95vw] p-0 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50/50 border-2 border-blue-200/60 shadow-[0_20px_60px_-15px_rgba(20,73,231,0.3)] max-h-[85vh] min-h-[600px] overflow-y-auto rounded-3xl backdrop-blur-xl">
-                <VisuallyHidden.Root>
-                    <DialogTitle>Group Project Review Session Intake Form</DialogTitle>
-                </VisuallyHidden.Root>
+                <DialogTitle className="sr-only">Group Project Review Session Intake Form</DialogTitle>
                 {/* Header Section with Gradient */}
                 <div className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 p-8 pb-12 relative overflow-hidden">
                     {/* Decorative circles */}
