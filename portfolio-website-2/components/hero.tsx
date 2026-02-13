@@ -4,12 +4,15 @@ import { Button } from "@/components/ui/button"
 import { Linkedin, Mail, Github, Calendar, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import { ADPListButton } from "@/components/adplist-button"
+import { GroupSessionButton } from "@/components/group-session-button"
 import { useState, useEffect } from "react"
 
 const slogans = [
   "Free Mentorship",
   "Resume Reviews",
-  "ML Career Advice"
+  "ML Career Advice",
+  "1:1 Sessions",
+  "Prepare for Interview"
 ]
 
 export function Hero() {
@@ -43,7 +46,10 @@ export function Hero() {
   }, [currentSloganIndex, displayedText, isDeleting])
 
   return (
-    <section id="hero" className="pt-20 pb-16 px-6 min-h-screen flex items-center relative">
+    <section id="hero" className="pt-20 pb-16 px-6 min-h-screen flex items-center relative overflow-hidden">
+      {/* Top Right Badge */}
+
+
       <div className="container mx-auto max-w-6xl relative z-10 mt-16 md:mt-20 lg:mt-24">
         <div className="grid md:grid-cols-[1.5fr_1fr] gap-12 items-center">
           <div className="space-y-8 order-2 md:order-1">
@@ -64,9 +70,12 @@ export function Hero() {
               </h2>
 
               <div className="space-y-4 pt-4">
-                <div className="flex flex-col gap-3 items-start">
-                  <ADPListButton />
-                  <p className="text-sm text-muted-foreground">
+                <div className="flex flex-col gap-3 items-start w-full">
+                  <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                    <ADPListButton />
+                    <GroupSessionButton />
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1">
                     Also available on{" "}
                     <a
                       href="https://topmate.io/yahya_alaa"
@@ -120,6 +129,30 @@ export function Hero() {
               <div className="absolute inset-4 md:inset-6 rounded-full overflow-hidden border-[6px] border-white shadow-lg bg-white group-hover:scale-110 group-hover:shadow-2xl transition-all duration-300">
                 <Image src="/images/profile-enhanced.png" alt="Yahya Alaa" fill className="object-cover" priority />
               </div>
+
+              {/* Top 10 Mentor Badge - Bottom Right */}
+              <a
+                href="https://adplist.org/community-certifications/top10fresh-dec-2025-data-engineering-c945f3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute -bottom-6 -right-6 md:-bottom-4 md:-right-10 z-20 flex items-center gap-2.5 bg-white/90 backdrop-blur-md border border-gray-200/80 rounded-full py-2 px-3 pr-4 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ease-out group/badge"
+              >
+                <Image
+                  src="/images/adplist-top-10-final.png"
+                  alt="Top 10 Data Engineering Mentor Badge"
+                  width={120}
+                  height={120}
+                  className="w-10 h-10 md:w-12 md:h-12 drop-shadow-md group-hover/badge:rotate-6 transition-transform duration-300"
+                  priority
+                />
+                <span className="flex items-center gap-1.5 text-[11px] md:text-xs font-semibold text-gray-800 leading-tight max-w-[140px]">
+                  <span className="relative flex h-2 w-2 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  </span>
+                  Top 10 Fresh in Data Engineering on ADPList
+                </span>
+              </a>
             </div>
           </div>
         </div>

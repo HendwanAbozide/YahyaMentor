@@ -26,7 +26,7 @@ export function ADPListButton({
             href={href}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="group relative h-[60px] px-8 rounded-xl flex items-center justify-center gap-3 bg-gradient-to-b from-[#0f0f2e] to-[#05051b] border border-white/10 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_40px_-10px_rgba(20,20,100,0.4)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer text-white no-underline"
+            className="group relative h-[52px] px-6 rounded-xl flex items-center justify-center gap-2 bg-gradient-to-b from-[#0f0f2e] to-[#05051b] border border-white/10 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_40px_-10px_rgba(20,20,100,0.4)] hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer text-white no-underline"
         >
             <svg
                 width="36"
@@ -75,7 +75,7 @@ export function ADPListButton({
                     }}
                 />
             </svg>
-            <p className="font-bold text-base leading-6 mb-0">
+            <p className="font-bold text-sm leading-6 mb-0">
                 {text}
             </p>
         </a>

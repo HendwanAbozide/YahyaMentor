@@ -1,27 +1,36 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { Star, Quote, ExternalLink, Calendar, MessageCircle, Clock, LucideIcon } from "lucide-react"
+import { Star, Quote, ExternalLink, Calendar, MessageCircle, Clock, LucideIcon, ArrowRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import testimonialsData from "@/data/testimonials.json"
 import statsData from "@/data/stats.json"
 import { Inter } from "next/font/google"
 import { ScrollReveal } from "@/components/scroll-reveal"
-import { PlatformBadge } from "@/components/platform-badge"
-import { TestimonialColumn } from "@/components/testimonial-column"
+import { TestimonialCard, Testimonial } from "@/components/testimonial-card"
+import { BentoGrid, BentoGridItem } from "@/components/bento-grid"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogDescription,
+} from "@/components/ui/dialog"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const testimonials = [...testimonialsData].sort((a, b) =>
+const testimonials: Testimonial[] = [...testimonialsData].sort((a, b) =>
   new Date(b.dateSort).getTime() - new Date(a.dateSort).getTime()
-)
+) as Testimonial[]
 
 const iconMap: Record<string, LucideIcon> = {
   Calendar,
   MessageCircle,
   Clock,
 }
-
 
 // Counter component with animation
 function AnimatedCounter({ end, duration = 2500, suffix = "" }: { end: number; duration?: number; suffix?: string }) {
@@ -65,13 +74,14 @@ function AnimatedCounter({ end, duration = 2500, suffix = "" }: { end: number; d
 }
 
 export function Testimonials() {
-  // Distribute testimonials row-by-row (round-robin) across 3 columns
-  const column1 = testimonials.filter((_, i) => i % 3 === 0)
-  const column2 = testimonials.filter((_, i) => i % 3 === 1)
-  const column3 = testimonials.filter((_, i) => i % 3 === 2)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Top 5 for the Bento Main View
+  // We'll use 5 items for a nice 3-column + 2-column bento mix
+  const featuredTestimonials = testimonials.slice(0, 5)
 
   return (
-    <section id="testimonials" className="py-24 px-6 overflow-hidden bg-secondary/20">
+    <section id="testimonials" className="py-24 px-6 bg-secondary/20">
       <div className="container mx-auto w-full max-w-7xl">
         <div className="space-y-6 mb-16 text-center">
           <ScrollReveal>
@@ -101,19 +111,73 @@ export function Testimonials() {
           </div>
         </div>
 
-        {/* Marquee Grid Container */}
-        <div
-          className="relative h-[800px] overflow-hidden"
-          style={{
-            maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
-          }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 h-full">
-            <TestimonialColumn testimonials={column1} duration={column1.length * 10} />
-            <TestimonialColumn testimonials={column2} duration={column2.length * 10} className="hidden md:block" />
-            <TestimonialColumn testimonials={column3} duration={column3.length * 10} className="hidden lg:block" />
-          </div>
+        {/* Bento Grid Layout (Main View) */}
+        <BentoGrid className="max-w-7xl mx-auto mb-12">
+          {featuredTestimonials.map((testimonial, index) => {
+            // Bento Logic:
+            // Item 0 (First one): Large (2 col span if needed, or row span)
+            // Item 3: Wide
+            const isWide = index === 3 || index === 6;
+            const isTall = index === 0;
+
+            return (
+              <BentoGridItem
+                key={testimonial.id}
+                className={cn(
+                  "glass border-white/20 bg-white/60", // Apply same glass style as cards
+                  index === 0 ? "md:col-span-2" : "",  // First item spans 2 columns
+                  index === 3 ? "md:col-span-2" : ""   // Fourth item spans 2 columns
+                )}
+              >
+                <TestimonialCard testimonial={testimonial} className="h-full border-0 shadow-none bg-transparent hover:shadow-none hover:border-0" />
+              </BentoGridItem>
+            )
+          })}
+        </BentoGrid>
+
+        {/* View All Button & Modal */}
+        <div className="flex justify-center">
+          <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+            <DialogTrigger asChild>
+              <Button size="lg" className="rounded-full px-8 bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-500/20 group">
+                View All {testimonials.length}+ Reviews
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-6xl h-[90vh] flex flex-col p-0 overflow-hidden bg-slate-50/95 backdrop-blur-xl border-white/20">
+              <DialogHeader className="p-6 border-b bg-white/50 backdrop-blur-sm z-20 shrink-0">
+                <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent">
+                  Mentee Success Stories
+                </DialogTitle>
+                <DialogDescription>
+                  Read what others describe about their mentorship experience.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
+                <BentoGrid className="max-w-7xl mx-auto pb-20">
+                  {/* Render ALL testimonials in Bento Layout with repeating pattern */}
+                  {testimonials.map((testimonial, i) => {
+                    // Pattern: repeats every 7 items
+                    // Index 0, 3, 6, etc. logic to create organic feel
+                    const index = i % 7;
+                    const isWide = index === 0 || index === 3;
+
+                    return (
+                      <BentoGridItem
+                        key={testimonial.id}
+                        className={cn(
+                          "glass border-white/20 bg-white/60",
+                          isWide ? "md:col-span-2" : ""
+                        )}
+                      >
+                        <TestimonialCard testimonial={testimonial} className="h-full border-0 shadow-none bg-transparent hover:shadow-none hover:border-0" />
+                      </BentoGridItem>
+                    )
+                  })}
+                </BentoGrid>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </section>

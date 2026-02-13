@@ -47,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-sans antialiased ${_geist.className}`}>
+      <body className={`font-sans antialiased ${_geist.className}`} suppressHydrationWarning>
         {/* SVG Gradient Definition for Icons */}
         <svg style={{ width: 0, height: 0, position: "absolute" }} aria-hidden="true">
           <defs>
