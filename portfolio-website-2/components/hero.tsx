@@ -150,7 +150,7 @@ export function Hero() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                   </span>
-                  Top 10 Fresh in Data Engineering on ADPList
+                  Top 10 Mentors in Data Engineering on ADPList (Dec'25)
                 </span>
               </a>
             </div>
