@@ -1,6 +1,6 @@
 [
     {
-        "value": 65,
+        "value": 75,
         "suffix": "+",
         "label": "Bookings",
         "icon": "Calendar"
@@ -12,7 +12,7 @@
         "icon": "MessageCircle"
     },
     {
-        "value": 2925,
+        "value": 3375,
         "suffix": "+",
         "label": "Minutes",
         "icon": "Clock"
